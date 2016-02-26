@@ -152,7 +152,6 @@ func (provider *Provider) IsAuthorized(request *http.Request) (*string, error) {
 
 	//baseString := consumer.requestString(request.Method, requestURL.String(), orderedParams)
 	baseString := consumer.requestString("GET", requestURL.String(), orderedParams)
-	consumer.signer.Debug(true)
 	signature, err := consumer.signer.Sign(baseString, "")
 	if err != nil {
 		return nil, err
