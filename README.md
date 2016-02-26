@@ -6,6 +6,7 @@ subsequently passes the request on as HTTP instead of HTTPS. Both the protocol a
 the method have been selectively statically set. 
 
 THIS FORK WILL NOT WORK IN A TYPICAL HOSTING ENVIRONMENT.
+Instead, use the original here: [github.com/mrjones/oauth](github.com/mrjones/oauth)
 
 [![GoDoc](http://godoc.org/github.com/mrjones/oauth?status.png)](http://godoc.org/github.com/mrjones/oauth)
 
