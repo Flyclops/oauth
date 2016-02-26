@@ -1,6 +1,12 @@
 OAuth 1.0 Library for [Go](http://golang.org)
 ========================
 
+WARNING: This fork is meant to work behind an SSL-terminated load balancer that
+subsequently passes the request on as HTTP instead of HTTPS. Both the protocol and 
+the method have been selectively statically set. 
+
+THIS FORK WILL NOT WORK IN A TYPICAL HOSTING ENVIRONMENT.
+
 [![GoDoc](http://godoc.org/github.com/mrjones/oauth?status.png)](http://godoc.org/github.com/mrjones/oauth)
 
 (If you need an OAuth 2.0 library, check out: http://code.google.com/p/goauth2/)
