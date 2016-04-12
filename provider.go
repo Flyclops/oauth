@@ -2,6 +2,8 @@ package oauth
 
 import (
 	"bytes"
+	"errors"
+	"fmt"
 	"io/ioutil"
 	"math"
 	"net/http"
@@ -103,8 +105,11 @@ func (provider *Provider) IsAuthorized(request *http.Request) (*string, error) {
 	if err != nil {
 		return nil, err
 	}
-	if math.Abs(float64(int64(oauthTimeNumber)-provider.clock.Seconds())) > 5*60 {
-		return nil, nil
+	secondsSinceSignature := math.Abs(float64(int64(oauthTimeNumber) - provider.clock.Seconds()))
+	if secondsSinceSignature > 5*60 {
+		return nil, errors.New(
+			fmt.Sprintf("Oauth timestamp outside of 300 seconds: %d", secondsSinceSignature),
+		)
 	}
 
 	userParams := requestURL.Query()
