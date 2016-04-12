@@ -107,7 +107,7 @@ func (provider *Provider) IsAuthorized(request *http.Request) (*string, error) {
 	}
 	secondsSinceSignature := math.Abs(float64(int64(oauthTimeNumber) - provider.clock.Seconds()))
 	if secondsSinceSignature > 5*60 {
-		errtxt := fmt.Sprintf("Oauth timestamp outside of 300 seconds: %d", secondsSinceSignature)
+		errtxt := fmt.Sprintf("Oauth timestamp outside of 300 seconds: %g", secondsSinceSignature)
 		return nil, errors.New(errtxt)
 	}
 
