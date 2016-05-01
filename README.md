@@ -3,7 +3,8 @@ OAuth 1.0 Library for [Go](http://golang.org)
 
 WARNING: This fork is meant to work behind an SSL-terminated load balancer that
 subsequently passes the request on as HTTP instead of HTTPS. Both the protocol and 
-the method have been selectively statically set. 
+the method have been selectively statically set. Further, the timestamp `secondsSinceSignature`
+check has been extended to 24 hours.
 
 THIS FORK WILL NOT WORK IN A TYPICAL HOSTING ENVIRONMENT.
 Instead, use the original here: [github.com/mrjones/oauth](github.com/mrjones/oauth)
