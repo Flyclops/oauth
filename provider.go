@@ -2,15 +2,17 @@ package oauth
 
 import (
 	"bytes"
-	"errors"
-	"fmt"
 	"io/ioutil"
-	"math"
 	"net/http"
 	"net/url"
 	"regexp"
-	"strconv"
 	"strings"
+
+	// For timestamp check
+	// "math"
+	// "strconv"
+	// "errors"
+	// "fmt"
 )
 
 //
@@ -101,15 +103,15 @@ func (provider *Provider) IsAuthorized(request *http.Request) (*string, error) {
 	delete(pars, "oauth_signature")
 
 	// Check the timestamp
-	oauthTimeNumber, err := strconv.Atoi(pars["oauth_timestamp"])
-	if err != nil {
-		return nil, err
-	}
-	secondsSinceSignature := math.Abs(float64(int64(oauthTimeNumber) - provider.clock.Seconds()))
-	if secondsSinceSignature > 24*60*60 { // 1 day
-		errtxt := fmt.Sprintf("Oauth timestamp outside of 86400 seconds: %g", secondsSinceSignature)
-		return nil, errors.New(errtxt)
-	}
+	//oauthTimeNumber, err := strconv.Atoi(pars["oauth_timestamp"])
+	//if err != nil {
+	//	return nil, err
+	//}
+	//secondsSinceSignature := math.Abs(float64(int64(oauthTimeNumber) - provider.clock.Seconds()))
+	//if secondsSinceSignature > 24*60*60 { // 1 day
+	//	errtxt := fmt.Sprintf("Oauth timestamp outside of 86400 seconds: %g", secondsSinceSignature)
+	//	return nil, errors.New(errtxt)
+	//}
 
 	userParams := requestURL.Query()
 
